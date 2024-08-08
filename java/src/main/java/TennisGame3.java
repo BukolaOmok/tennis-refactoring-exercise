@@ -21,7 +21,7 @@ public class TennisGame3 implements TennisGame {
     }
 
     private boolean isNormalRound() {
-       return player1Score < 4 && player2Score < 4 && !(player1Score + player2Score == 6);
+        return player1Score < 4 && player2Score < 4 && !(player1Score + player2Score == 6);
     }
 
     private String differentScore() {
@@ -35,7 +35,7 @@ public class TennisGame3 implements TennisGame {
             return "Deuce";
         }
         String leadingPlayer = player1Score > player2Score ? player1Name : player2Name;
-        return ((player1Score-player2Score)*(player1Score-player2Score) == 1) ? "Advantage " + leadingPlayer : "Win for " + leadingPlayer;
+        return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + leadingPlayer : "Win for " + leadingPlayer; // should come back to break down the return
     }
 
     public void wonPoint(String playerName) {
@@ -44,7 +44,7 @@ public class TennisGame3 implements TennisGame {
             player1Score += 1;
         } else
             player2Score += 1;
-        
+
     }
 
 }

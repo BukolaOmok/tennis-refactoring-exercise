@@ -21,7 +21,7 @@ public class TennisGame6 implements TennisGame {
     public String getScore() {
         if (isDeuce()) {
             return deuceScore();
-        } else if (isEndGame()){
+        } else if (isEndGame()) {
             return endGameScore();
         } else {
             return regularScore();
