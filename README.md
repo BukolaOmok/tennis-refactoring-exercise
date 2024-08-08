@@ -1,29 +1,42 @@
-_Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
+## Debrief
+I attempted this java version of the tennis task. Out of the six files, I was able to complete 2 and got started with a third one
 
-This is Bukola's project
+Completed
+- TennisGame3
+- TennisGame6
 
-# Tennis Refactoring Kata
+Commenced
+- TennisGame1
 
-You can find out more about this exercise and where it comes from in [this YouTube video](https://youtu.be/XifUs1FhWRc). There are also some Guided Learning Hour videos that include demos of me solving parts of it.
+Not attempted
+- TennisGame2
+- TennisGame4
+- TennisGame5
 
-* [Refactoring: What you need to know](https://youtu.be/K7xSsNpeM8I) - includes demo of TennisGame3 in C#
-* [Refactoring Skills: Extract Function](https://youtu.be/lOAktlPd8uk) - includes demo of TennisGame6 in C#
+## Issues Spotted and how they were refactored and why the refactor was important
+1. ***Poor variable naming***:
+   - Issue: For instance TennisGame1 named player score variable "m_score1". This makes the code difficult to understand at a glance.
+   - Refactor: I renamed variables to more descriptive names such as player1Score and player2Score. 
+   - Why it was important: This improved readability and made the code more intuitive.
+   
+2. ***Use of poor comparison method***:
+   - Issue: For instance in the wonPoint() method in TennisGame3, the author wanted to compare whether playerName is equal to player1Name and used "=". Best practice is to use equals()
+   - Refactor: I replaced == with the proper equals() method for comparing strings.
+   - Why it was important: It helps to make the code more maintainable and easier to debug
 
-# The Scenario
+3. ***Hard-coding***: 
+   - Issue: For instance, "Player 1" was hard-coded as a parameter into the wonPoint() method. This is not maintainable
+   - Refactor:  I removed the hard-coded string and instead used the player1Name variable. 
+   - Why it was important: This makes the code adaptable to any player name passed during initialisation and it helps for easier debugging
+   
+4. ***Too much logic lumped into one method***: 
+   - Issue: I saw his in virtually all the files.Methods like getScore() had too much logic lumped together, making the code hard to understand and maintain.
+   - Refactor:  I decomposed large methods like getScore() into smaller, more focused methods (isNormalRound(), differentScore(), deuceScore()).
+   - Why it was important: It makes each method easier to read, test, and maintain.
 
-Imagine you work for a consultancy company, and one of your colleagues has been doing some work for the Tennis Society. The contract is for 10 hours billable work, and your colleague has spent 8.5 hours working on it. Unfortunately he has now fallen ill. He says he has completed the work, and the tests all pass. Your boss has asked you to take over from him. She wants you to spend an hour or so on the code so she can bill the client for the full 10 hours. She instructs you to tidy up the code a little and perhaps make some notes so you can give your colleague some feedback on his chosen design. You should also prepare to talk to your boss about the value of this refactoring work, over and above the extra billable hours.
 
-There are several versions of this refactoring kata, each with their own design smells and challenges. I suggest you start with the first one, with the class "TennisGame1". The test suite provided is fairly comprehensive, and fast to run. You should not need to change the tests, only run them often as you refactor.
 
-There is a deliberate error in several of the implementations - the player names are hard-coded to "player1" and "player2". After you refactor, you may want to fix this problem and add suitable test cases to prove your fix works.
 
-If you like this Kata, you may be interested in [my books](https://leanpub.com/u/emilybache) and website [SammanCoaching.org](https://sammancoaching.org)
-
-## Kata Description
-
-Here is a description of the problem this code is designed to solve: [Tennis Kata](https://sammancoaching.org/kata_descriptions/tennis.html).
-
-## Questions to discuss afterwards
 
 * How did it feel to work with such fast, comprehensive tests?
 * Did you make mistakes while refactoring that were caught by the tests?
