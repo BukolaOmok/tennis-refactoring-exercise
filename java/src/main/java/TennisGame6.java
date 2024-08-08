@@ -18,64 +18,85 @@ public class TennisGame6 implements TennisGame {
 
     }
 
-    public String getScore()
-    {
+    private boolean isDeuce() {
+        return player1Score == player2Score;
+    }
+
+    private String deuceScore() {
+        String tieScore;
+        return switch (player1Score) {
+            case 0:
+                tieScore = "Love-All";
+            case 1:
+                tieScore = "Fifteen-All";
+            case 2:
+                tieScore = "Thirty-All";
+            default:
+                tieScore = "Deuce";
+        };
+    }
+
+    private String endGameScore() {
+        if (player1Score - player2Score == 1) {
+           return "Advantage " + player1Name;
+        } else if (player1Score - player2Score == -1) {
+            return "Advantage " + player2Name;
+        } else if (player1Score - player2Score >= 2) {
+            return "Win for " + player1Name;
+        } else {
+            return "Win for " + player2Name;
+        }
+    }
+
+    public String getScore() {
         String result;
+//
+//        if (isDeuce()) {
+//            // tie score
+//            String tieScore;
+//            switch (player1Score) {
+//                case 0:
+//                    tieScore = "Love-All";
+//                    break;
+//                case 1:
+//                    tieScore = "Fifteen-All";
+//                    break;
+//                case 2:
+//                    tieScore = "Thirty-All";
+//                    break;
+//                default:
+//                    tieScore = "Deuce";
+//                    break;
+//            }
 
-        if (player1Score == player2Score)
-        {
-            // tie score
-            String tieScore;
-            switch (player1Score)
-            {
-                case 0:
-                    tieScore = "Love-All";
-                    break;
-                case 1:
-                    tieScore = "Fifteen-All";
-                    break;
-                case 2:
-                    tieScore = "Thirty-All";
-                    break;
-                default:
-                    tieScore = "Deuce";
-                    break;
-            }
-
-            result = tieScore;
-        }
-        else if (player1Score >= 4 || player2Score >= 4)
-        {
-            // end-game score
-            String endGameScore;
-
-            if (player1Score - player2Score == 1) {
-                endGameScore = "Advantage " + player1Name;
-            } else if (player1Score - player2Score == -1) {
-                endGameScore = "Advantage " + player2Name;
-            } else if (player1Score - player2Score >= 2) {
-                endGameScore = "Win for " + player1Name;
-            } else {
-                endGameScore = "Win for " + player2Name;
-            }
-
-            result = endGameScore;
-        }
-        else
-        {
+//            result = tieScore;
+//        } else if (player1Score >= 4 || player2Score >= 4) {
+//            // end-game score
+//            String endGameScore;
+//
+//            if (player1Score - player2Score == 1) {
+//                endGameScore = "Advantage " + player1Name;
+//            } else if (player1Score - player2Score == -1) {
+//                endGameScore = "Advantage " + player2Name;
+//            } else if (player1Score - player2Score >= 2) {
+//                endGameScore = "Win for " + player1Name;
+//            } else {
+//                endGameScore = "Win for " + player2Name;
+//            }
+//
+//            result = endGameScore;
+//        } else {
             // regular score
             String regularScore;
 
-            String score1 =  switch (player1Score)
-            {
+            String score1 = switch (player1Score) {
                 case 0 -> "Love";
                 case 1 -> "Fifteen";
                 case 2 -> "Thirty";
                 default -> "Forty";
             };
 
-            var score2 =  switch (player2Score)
-            {
+            var score2 = switch (player2Score) {
                 case 0 -> "Love";
                 case 1 -> "Fifteen";
                 case 2 -> "Thirty";
