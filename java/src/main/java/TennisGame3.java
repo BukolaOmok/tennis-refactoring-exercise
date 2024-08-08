@@ -3,8 +3,8 @@ public class TennisGame3 implements TennisGame {
 
     private int player1Score; // Changed player1 score variable for clarity
     private int player2Score; // Changed player2 score variable for clarity
-    private String player1Name; // Changed player1 name variable for clarity
-    private String player2Name; // changed player2 name variable for clarity
+    private final String player1Name; // Changed player1 name variable for clarity
+    private final String player2Name; // changed player2 name variable for clarity
 
     public TennisGame3(String player1Name, String player2Name) {
         this.player1Name = player1Name;
