@@ -11,20 +11,33 @@ public class TennisGame3 implements TennisGame {
         this.player2Name = player2Name;
     }
 
+    // decomposed this method - added isNormalRound() differentScore() and deuceScore()
     public String getScore() {
-        String s;
-        if (player1Score < 4 && player2Score < 4 && !(player1Score + player2Score == 6)) {
-            String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"}; 
-            s = p[player1Score];
-            return (player1Score == player2Score) ? s + "-All" : s + "-" + p[player2Score];
+        if (isNormalRound()) {
+            return differentScore();
         } else {
-            if (player1Score == player2Score)
-                return "Deuce";
-            s = player1Score > player2Score ? player1Name : player2Name;
-            return ((player1Score-player2Score)*(player1Score-player2Score) == 1) ? "Advantage " + s : "Win for " + s;
+            return deuceScore();
         }
     }
-    
+
+    private boolean isNormalRound() {
+       return player1Score < 4 && player2Score < 4 && !(player1Score + player2Score == 6);
+    }
+
+    private String differentScore() {
+        String[] scoreName = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
+        String score = scoreName[player1Score];
+        return (player1Score == player2Score) ? score + "-All" : score + "-" + scoreName[player2Score];
+    }
+
+    private String deuceScore() {
+        if (player1Score == player2Score) {
+            return "Deuce";
+        }
+        String leadingPlayer = player1Score > player2Score ? player1Name : player2Name;
+        return ((player1Score-player2Score)*(player1Score-player2Score) == 1) ? "Advantage " + leadingPlayer : "Win for " + leadingPlayer;
+    }
+
     public void wonPoint(String playerName) {
         // Followed best practice by using "equals()" to compare instead of "=="
         if (playerName.equals(player1Name)) {
