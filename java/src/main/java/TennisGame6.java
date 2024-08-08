@@ -18,27 +18,40 @@ public class TennisGame6 implements TennisGame {
 
     }
 
+    public String getScore() {
+        if (isDeuce()) {
+            return deuceScore();
+        } else if (isEndGame()){
+            return endGameScore();
+        } else {
+            return regularScore();
+        }
+    }
+
     private boolean isDeuce() {
         return player1Score == player2Score;
     }
 
+    private boolean isEndGame() {
+        return player1Score >= 4 || player2Score >= 4;
+    }
+
     private String deuceScore() {
-        String tieScore;
         return switch (player1Score) {
             case 0:
-                tieScore = "Love-All";
+                yield "Love-All";
             case 1:
-                tieScore = "Fifteen-All";
+                yield "Fifteen-All";
             case 2:
-                tieScore = "Thirty-All";
+                yield "Thirty-All";
             default:
-                tieScore = "Deuce";
+                yield "Deuce";
         };
     }
 
     private String endGameScore() {
         if (player1Score - player2Score == 1) {
-           return "Advantage " + player1Name;
+            return "Advantage " + player1Name;
         } else if (player1Score - player2Score == -1) {
             return "Advantage " + player2Name;
         } else if (player1Score - player2Score >= 2) {
@@ -48,66 +61,25 @@ public class TennisGame6 implements TennisGame {
         }
     }
 
-    public String getScore() {
-        String result;
-//
-//        if (isDeuce()) {
-//            // tie score
-//            String tieScore;
-//            switch (player1Score) {
-//                case 0:
-//                    tieScore = "Love-All";
-//                    break;
-//                case 1:
-//                    tieScore = "Fifteen-All";
-//                    break;
-//                case 2:
-//                    tieScore = "Thirty-All";
-//                    break;
-//                default:
-//                    tieScore = "Deuce";
-//                    break;
-//            }
+    private String regularScore() {
+        String score1 = switch (player1Score) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            default -> "Forty";
+        };
 
-//            result = tieScore;
-//        } else if (player1Score >= 4 || player2Score >= 4) {
-//            // end-game score
-//            String endGameScore;
-//
-//            if (player1Score - player2Score == 1) {
-//                endGameScore = "Advantage " + player1Name;
-//            } else if (player1Score - player2Score == -1) {
-//                endGameScore = "Advantage " + player2Name;
-//            } else if (player1Score - player2Score >= 2) {
-//                endGameScore = "Win for " + player1Name;
-//            } else {
-//                endGameScore = "Win for " + player2Name;
-//            }
-//
-//            result = endGameScore;
-//        } else {
-            // regular score
-            String regularScore;
+        String score2 = switch (player2Score) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            default -> "Forty";
+        };
 
-            String score1 = switch (player1Score) {
-                case 0 -> "Love";
-                case 1 -> "Fifteen";
-                case 2 -> "Thirty";
-                default -> "Forty";
-            };
-
-            var score2 = switch (player2Score) {
-                case 0 -> "Love";
-                case 1 -> "Fifteen";
-                case 2 -> "Thirty";
-                default -> "Forty";
-            };
-
-            regularScore = score1 + "-" + score2;
-
-            result = regularScore;
-        }
-
-        return result;
+        return score1 + "-" + score2;
     }
 }
+
+
+
+
