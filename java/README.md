@@ -13,3 +13,5 @@ Not attempted
 - TennisGame2
 - TennisGame4
 - TennisGame5
+
+Further notes are in the toplevel readme file
