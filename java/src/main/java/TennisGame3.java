@@ -26,10 +26,11 @@ public class TennisGame3 implements TennisGame {
     }
     
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
-            this.player1Score += 1;
-        else
-            this.player2Score += 1;
+        // Followed best practice by using "equals()" to compare instead of "=="
+        if (playerName.equals(player1Name)) {
+            player1Score += 1;
+        } else
+            player2Score += 1;
         
     }
 
