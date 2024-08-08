@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class TennisGame1 implements TennisGame {
     
@@ -12,7 +13,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
+        if (Objects.equals(playerName, "player1"))
             player1Score += 1;
         else
             player2Score += 1;
